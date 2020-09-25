@@ -1,20 +1,18 @@
 package br.com.helpfulstudent.service;
 
-import br.com.helpfulstudent.model.User;
-import org.springframework.stereotype.Service;
+import br.com.helpfulstudent.dto.UserDTO;
 
 import java.util.List;
 
-@Service
 public interface UserService {
 
-	public User create(User user);
+	public UserDTO create(UserDTO userDto);
 
-	public List<User> findAll();
+	public List<UserDTO> findAll();
 
-	public User findById(Long id);
+	public UserDTO findById(Long id);
 
-	public User update(User user);
+	public UserDTO update(UserDTO userDto);
 
 	public void delete(Long id);
 

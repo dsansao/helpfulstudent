@@ -1,46 +1,31 @@
-package br.com.helpfulstudent.model;
+package br.com.helpfulstudent.dto;
 
 import br.com.helpfulstudent.model.enumeration.Gender;
 import br.com.helpfulstudent.model.enumeration.UserType;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-@Entity
-@Table(name="user")
-public class User implements Serializable{
+public class UserDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "name", nullable = false, length = 200)
 	private String name;
 
-	@Column(name = "email", nullable = false, length = 80)
 	private String email;
 
-	@Column(name = "password", nullable = false, length = 80)
 	private String password;
 
-	@Column(name = "date_of_birth", nullable = false)
-	@Temporal(TemporalType.DATE)
 	private Date dateOfBirth;
 
 	private String age;
 
-	@Enumerated(EnumType.STRING)
-	@Column(name = "gender", nullable = false, length = 10)
 	private Gender gender;
 
-	@Enumerated(EnumType.STRING)
-	@Column(name = "user_type", nullable = false, length = 10)
 	private UserType userType;
 
-	@Column(name = "active", nullable = false)
 	private Boolean active;
 
 	public static long getSerialVersionUID() {
@@ -121,7 +106,7 @@ public class User implements Serializable{
 
 	@Override
 	public String toString() {
-		return "User{" +
+		return "UserDTO{" +
 				"id=" + id +
 				", name='" + name + '\'' +
 				", email='" + email + '\'' +

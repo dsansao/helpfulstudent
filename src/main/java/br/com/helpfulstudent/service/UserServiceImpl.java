@@ -1,9 +1,10 @@
 package br.com.helpfulstudent.service;
 
+import br.com.helpfulstudent.dto.UserDTO;
 import br.com.helpfulstudent.exception.ResourceNotFoundException;
 import br.com.helpfulstudent.model.User;
 import br.com.helpfulstudent.repository.UserRepository;
-import org.springframework.beans.BeanUtils;
+import br.com.helpfulstudent.util.DozerConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,37 +16,36 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	UserRepository repository;
 
-	public User create(User user) {
-		return repository.save(user);
+	public UserDTO create(UserDTO userDto) {
+		User user = DozerConverter.parseObject(userDto, User.class);
+		userDto = DozerConverter.parseObject(repository.save(user), UserDTO.class);
+		return userDto;
 	}
 
-	public List<User> findAll() {
-		return repository.findAll();
+	public List<UserDTO> findAll() {
+		return DozerConverter.parseListObjects(repository.findAll(), UserDTO.class);
 	}
 
-	public User findById(Long id) {
+	public UserDTO findById(Long id) {
 
-		return repository.findById(id)
+		User user = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("No records found for this ID"));
+		return DozerConverter.parseObject(user, UserDTO.class);
 	}
 
-	public User update(User user) {
-		User entity = repository.findById(user.getId())
+	public UserDTO update(UserDTO userDto) {
+		repository.findById(userDto.getId())
 				.orElseThrow(() -> new ResourceNotFoundException("No records found for this ID"));
 
-		this.dtoToEntity(user, entity);
+		User user = DozerConverter.parseObject(userDto, User.class);
 
-		return repository.save(entity);
+		var vo = DozerConverter.parseObject(repository.save(user), UserDTO.class);
+		return vo;
 	}
 
 	public void delete(Long id) {
-		User entity = repository.findById(id)
+		User user = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("No records found for this ID"));
-		repository.delete(entity);
-	}
-
-	private void dtoToEntity(User user, User entity) {
-
-        BeanUtils.copyProperties(user, entity);
+		repository.delete(user);
 	}
 }

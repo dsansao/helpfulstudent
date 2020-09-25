@@ -1,6 +1,6 @@
 package br.com.helpfulstudent.controller;
 
-import br.com.helpfulstudent.model.User;
+import br.com.helpfulstudent.dto.UserDTO;
 import br.com.helpfulstudent.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,29 +10,29 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
 	
 	@Autowired
 	private UserService userService;
 	
 	@GetMapping
-	public List<User> findAll() {
+	public List<UserDTO> findAll() {
 		return userService.findAll();
 	}	
 	
 	@GetMapping("/{id}")
-	public User findById(@PathVariable("id") Long id) {
+	public UserDTO findById(@PathVariable("id") Long id) {
 		return userService.findById(id);
-	}	
-	
+	}
+
 	@PostMapping
-	public User create(@RequestBody User user) {
+	public UserDTO create(@RequestBody UserDTO user) {
 		return userService.create(user);
 	}
 	
 	@PutMapping
-	public User update(@RequestBody User user) {
+	public UserDTO update(@RequestBody UserDTO user) {
 		return userService.update(user);
 	}	
 	
