@@ -1,7 +1,7 @@
 package br.com.helpfulstudent.dto;
 
 import br.com.helpfulstudent.model.enumeration.Gender;
-import br.com.helpfulstudent.model.enumeration.UserType;
+import br.com.helpfulstudent.model.enumeration.Roles;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -12,7 +12,7 @@ public class UserDTO implements Serializable{
 
 	private Long id;
 
-	private String name;
+	private String username;
 
 	private String email;
 
@@ -24,7 +24,7 @@ public class UserDTO implements Serializable{
 
 	private Gender gender;
 
-	private UserType userType;
+	private Roles role;
 
 	private Boolean active;
 
@@ -40,12 +40,12 @@ public class UserDTO implements Serializable{
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getEmail() {
@@ -88,12 +88,12 @@ public class UserDTO implements Serializable{
 		this.gender = gender;
 	}
 
-	public UserType getUserType() {
-		return userType;
+	public Roles getRole() {
+		return role;
 	}
 
-	public void setUserType(UserType userType) {
-		this.userType = userType;
+	public void setRole(Roles userType) {
+		this.role = role;
 	}
 
 	public Boolean getActive() {
@@ -108,13 +108,13 @@ public class UserDTO implements Serializable{
 	public String toString() {
 		return "UserDTO{" +
 				"id=" + id +
-				", name='" + name + '\'' +
+				", username='" + username + '\'' +
 				", email='" + email + '\'' +
 				", password='" + password + '\'' +
 				", dateOfBirth=" + dateOfBirth +
 				", age='" + age + '\'' +
 				", gender=" + gender +
-				", userType=" + userType +
+				", role=" + role +
 				", active=" + active +
 				'}';
 	}

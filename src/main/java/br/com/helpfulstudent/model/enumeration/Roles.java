@@ -1,6 +1,6 @@
 package br.com.helpfulstudent.model.enumeration;
 
-public enum UserType {
+public enum Roles {
 
     ADMIN,
     TEACHER,

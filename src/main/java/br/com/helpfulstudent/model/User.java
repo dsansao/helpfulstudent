@@ -1,7 +1,8 @@
 package br.com.helpfulstudent.model;
 
 import br.com.helpfulstudent.model.enumeration.Gender;
-import br.com.helpfulstudent.model.enumeration.UserType;
+import br.com.helpfulstudent.model.enumeration.Roles;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -9,7 +10,7 @@ import java.util.Date;
 
 @Entity
 @Table(name="user")
-public class User implements Serializable{
+public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -17,8 +18,8 @@ public class User implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "name", nullable = false, length = 200)
-	private String name;
+	@Column(name = "username", nullable = false, length = 200)
+	private String username;
 
 	@Column(name = "email", nullable = false, length = 80)
 	private String email;
@@ -37,8 +38,8 @@ public class User implements Serializable{
 	private Gender gender;
 
 	@Enumerated(EnumType.STRING)
-	@Column(name = "user_type", nullable = false, length = 10)
-	private UserType userType;
+	@Column(name = "role", nullable = false, length = 10)
+	private Roles role;
 
 	@Column(name = "active", nullable = false)
 	private Boolean active;
@@ -55,12 +56,12 @@ public class User implements Serializable{
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getEmail() {
@@ -103,12 +104,12 @@ public class User implements Serializable{
 		this.gender = gender;
 	}
 
-	public UserType getUserType() {
-		return userType;
+	public Roles getRole() {
+		return role;
 	}
 
-	public void setUserType(UserType userType) {
-		this.userType = userType;
+	public void setRole(Roles role) {
+		this.role = role;
 	}
 
 	public Boolean getActive() {
@@ -123,13 +124,13 @@ public class User implements Serializable{
 	public String toString() {
 		return "User{" +
 				"id=" + id +
-				", name='" + name + '\'' +
+				", username='" + username + '\'' +
 				", email='" + email + '\'' +
 				", password='" + password + '\'' +
 				", dateOfBirth=" + dateOfBirth +
 				", age='" + age + '\'' +
 				", gender=" + gender +
-				", userType=" + userType +
+				", role=" + role +
 				", active=" + active +
 				'}';
 	}
