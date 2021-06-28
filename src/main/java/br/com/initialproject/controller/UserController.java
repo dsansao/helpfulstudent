@@ -26,6 +26,11 @@ public class UserController {
 		return userService.findById(id);
 	}
 
+	@GetMapping("/users")
+	public List<UserDTO> find() {
+		return userService.findAll();
+	}
+
 	@PostMapping
 	public UserDTO create(@RequestBody UserDTO user) {
 		return userService.create(user);

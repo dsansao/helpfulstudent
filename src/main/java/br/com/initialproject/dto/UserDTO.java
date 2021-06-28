@@ -1,7 +1,7 @@
 package br.com.initialproject.dto;
 
 import br.com.initialproject.model.enumeration.Gender;
-import br.com.initialproject.model.enumeration.Roles;
+import br.com.initialproject.model.enumeration.Role;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -16,6 +16,8 @@ public class UserDTO implements Serializable{
 
 	private String email;
 
+	private String cpf;
+
 	private String password;
 
 	private Date dateOfBirth;
@@ -24,12 +26,26 @@ public class UserDTO implements Serializable{
 
 	private Gender gender;
 
-	private Roles role;
+	private Role role;
 
 	private Boolean active;
 
 	public static long getSerialVersionUID() {
 		return serialVersionUID;
+	}
+
+	public UserDTO() {};
+
+	public UserDTO(String username, String email, String cpf, String password, Date dateOfBirth, String age, Gender gender, Role role, Boolean active) {
+		this.username = username;
+		this.email = email;
+		this.cpf = cpf;
+		this.password = password;
+		this.dateOfBirth = dateOfBirth;
+		this.age = age;
+		this.gender = gender;
+		this.role = role;
+		this.active = active;
 	}
 
 	public Long getId() {
@@ -88,11 +104,11 @@ public class UserDTO implements Serializable{
 		this.gender = gender;
 	}
 
-	public Roles getRole() {
+	public Role getRole() {
 		return role;
 	}
 
-	public void setRole(Roles userType) {
+	public void setRole(Role role) {
 		this.role = role;
 	}
 
@@ -104,18 +120,11 @@ public class UserDTO implements Serializable{
 		this.active = active;
 	}
 
-	@Override
-	public String toString() {
-		return "UserDTO{" +
-				"id=" + id +
-				", username='" + username + '\'' +
-				", email='" + email + '\'' +
-				", password='" + password + '\'' +
-				", dateOfBirth=" + dateOfBirth +
-				", age='" + age + '\'' +
-				", gender=" + gender +
-				", role=" + role +
-				", active=" + active +
-				'}';
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 }

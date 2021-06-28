@@ -1,12 +1,13 @@
 CREATE TABLE `user` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `username` varchar(200) COLLATE utf8_bin NOT NULL UNIQUE,
-  `email` varchar(80) COLLATE utf8_bin NOT NULL UNIQUE,
-  `password` varchar(80) COLLATE utf8_bin NOT NULL,
-  `role` ENUM('ADMIN', 'STUDENT', 'TEACHER') COLLATE utf8_bin NOT NULL,
-  `date_of_birth` date NOT NULL,
-  `age` varchar(255) COLLATE utf8_bin DEFAULT NULL,
-  `gender` ENUM('MALE', 'FEMALE', 'OTHER') COLLATE utf8_bin NOT NULL,
-  `active` bit(1) NOT NULL,
+  `username` varchar(200) NOT NULL UNIQUE,
+  `cpf` varchar(11) NOT NULL UNIQUE,
+  `email` varchar(80) NOT NULL UNIQUE,
+  `password` varchar(80) NOT NULL,
+  `role` ENUM('ADMIN', 'STUDENT', 'TEACHER') NOT NULL,
+  `date_of_birth` date,
+  `age` varchar(255) DEFAULT NULL,
+  `gender` ENUM('MALE', 'FEMALE', 'OTHER') NOT NULL,
+  `active` bit(1) DEFAULT 1 NOT NULL,
   PRIMARY KEY (`id`)
 )

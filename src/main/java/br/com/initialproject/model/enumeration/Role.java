@@ -1,6 +1,6 @@
 package br.com.initialproject.model.enumeration;
 
-public enum Roles {
+public enum Role {
 
     ADMIN,
     TEACHER,
